@@ -66,7 +66,7 @@ def process_video(video_path, output_dir=None, frame_offset=0):
     videoFeature = videoFeature[:int(round(length * 25)),:,:]
     
     # Evaluate using model
-    durationSet = {1,1,1,2,2,2,3,3,4,5,6}
+    durationSet = [1,1,1,2,2,2,3,3,4,5,6]
     allScore = []
     
     for duration in durationSet:

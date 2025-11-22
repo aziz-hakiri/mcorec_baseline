@@ -31,15 +31,15 @@ def benchmark_vtt_wer(ref_vtt, hypo_vtt, ref_uem_start, ref_uem_end, hypo_uem_st
     ref_strings = []
     hypo_strings = []
     for caption in webvtt.read(ref_vtt):
-        if caption.start_in_seconds + caption.start_time.milliseconds/1000 < ref_uem_start:
+        if caption.start_in_seconds < ref_uem_start:
             continue
-        if caption.end_in_seconds + caption.end_time.milliseconds/1000 > ref_uem_end:
+        if caption.end_in_seconds > ref_uem_end:
             continue
         ref_strings.append(remove_disfluencies(text_normalizer(caption.text)))
     for caption in webvtt.read(hypo_vtt):
-        if caption.start_in_seconds + caption.start_time.milliseconds/1000 < hypo_uem_start:
+        if caption.start_in_seconds < hypo_uem_start:
             continue
-        if caption.end_in_seconds + caption.end_time.milliseconds/1000 > hypo_uem_end:
+        if caption.end_in_seconds > hypo_uem_end:
             continue
         hypo_strings.append(remove_disfluencies(text_normalizer(caption.text)))
     

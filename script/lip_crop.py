@@ -66,7 +66,7 @@ def process_video(video_path, output_dir=None):
         out.run(overwrite_output=True)
     except Exception as e:
         traceback.print_exc()
-        print(f"Error processing {video_path} segment {segment_frame[0]}-{segment_frame[-1]}")
+        print(f"Error processing {video_path}")
 
 def main():
     import argparse
