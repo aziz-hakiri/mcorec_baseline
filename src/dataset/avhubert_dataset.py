@@ -19,17 +19,17 @@ import numpy as np
 from python_speech_features import logfbank
 import torch.nn.functional as F
 
-def cut_or_pad(data, size, dim=0):
+def cut_or_pad(data, size):
     """
-    Pads or trims the data along a dimension.
+    Pads or trims the data along the first dimension (dim=0).
     """
-    if data.size(dim) < size:
-        padding = size - data.size(dim)
+    if data.size(0) < size:
+        padding = size - data.size(0)
         data = torch.nn.functional.pad(data, (0, 0, 0, padding), "constant")
-        size = data.size(dim)
-    elif data.size(dim) > size:
+        size = data.size(0)
+    elif data.size(0) > size:
         data = data[:size]
-    assert data.size(dim) == size
+    assert data.size(0) == size
     return data
 
 
