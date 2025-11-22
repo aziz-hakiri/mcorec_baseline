@@ -144,9 +144,9 @@ class AdaptiveTimeMask(torch.nn.Module):
             if length - t <= 0:
                 continue
             t_start = random.randrange(0, length - t)
-            if t_start == t_start + t:
+            if t == 0:
                 continue
-            t_end += t_start
+            t_end = t_start + t
             cloned[t_start:t_end] = 0
         return cloned
 
